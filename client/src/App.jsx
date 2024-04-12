@@ -1,9 +1,9 @@
-import Client from "./client/Client";
+import Customer from "./customer/Customer";
 function App() {
     return (
         <div>
             APP
-            <Client />
+            <Customer />
         </div>
     );
 }
