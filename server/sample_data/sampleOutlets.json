@@ -1,0 +1,80 @@
+[
+    {
+        "name": "Fast Food Point",
+        "contact": "9876543210",
+        "status": "open",
+        "image": "delicious_delights.jpg",
+        "menu_items": [
+            {
+                "name": "French Fries",
+                "price": 80,
+                "cooking_time": 15,
+                "image": "chicken_tikka_masala.jpg"
+            },
+            {
+                "name": "Pasta",
+                "price": 100,
+                "cooking_time": 20,
+                "image": "vegetable_biryani.jpg"
+            },
+            {
+                "name": "Cheese Pizza",
+                "price": 150,
+                "cooking_time": 25,
+                "image": "salmon_nigiri.jpg"
+            }
+        ]
+    },
+    {
+        "name": "Cold Brew Cafe",
+        "contact": "8765432109",
+        "status": "closed",
+        "image": "pizzeria_italia.jpg",
+        "menu_items": [
+            {
+                "name": "Cappuccino",
+                "price": 50,
+                "cooking_time": 10,
+                "image": "margherita_pizza.jpg"
+            },
+            {
+                "name": "Frappe",
+                "price": 70,
+                "cooking_time": 15,
+                "image": "pepperoni_pizza.jpg"
+            },
+            {
+                "name": "Latte",
+                "price": 60,
+                "cooking_time": 10,
+                "image": "salmon_nigiri.jpg"
+            }
+        ]
+    },
+    {
+        "name": "Shree Tea Spot",
+        "contact": "7654321098",
+        "status": "open",
+        "image": "sushi_express.jpg",
+        "menu_items": [
+            {
+                "name": "Masala Chai",
+                "price": 20,
+                "cooking_time": 5,
+                "image": "california_roll.jpg"
+            },
+            {
+                "name": "Green Tea",
+                "price": 30,
+                "cooking_time": 10,
+                "image": "salmon_nigiri.jpg"
+            },
+            {
+                "name": "Special Chai",
+                "price": 10,
+                "cooking_time": 5,
+                "image": "salmon_nigiri.jpg"
+            }
+        ]
+    }
+]

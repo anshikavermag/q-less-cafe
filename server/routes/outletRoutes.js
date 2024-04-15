@@ -1,7 +1,6 @@
 import express from 'express';
 import {
     getAllOutlets,
-    getOutlet,
     createOutlet,
     updateOutlet,
     deleteOutlet,
@@ -14,17 +13,10 @@ import {
 const outletRouter = express.Router();
 
 outletRouter.route('/').get(getAllOutlets).post(createOutlet);
-
+outletRouter.route('/:outletId').patch(updateOutlet).delete(deleteOutlet);
+outletRouter.route('/:outletId/menu').get(getMenu).post(addMenuItem);
 outletRouter
-    .route('/:id')
-    .get(getOutlet)
-    .patch(updateOutlet)
-    .delete(deleteOutlet);
-
-outletRouter.route('/:id/menu').get(getMenu).post(addMenuItem);
-
-outletRouter
-    .route('/:outletID/menu/:itemID')
+    .route('/:outletId/menu/:itemId')
     .patch(updateMenuItem)
     .delete(deleteMenuItem);
 
