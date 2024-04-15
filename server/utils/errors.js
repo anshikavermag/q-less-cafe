@@ -1,13 +1,16 @@
-export function resourceNotFound(res) {
-    return res.status(404).json({
+export function resourceNotFound(response, resource) {
+    return response.status(404).json({
         status: 'fail',
-        message: 'Resource not found!',
+        message: `${resource} not found!`,
     });
 }
 
 export function internalServerErr(res, err) {
     return res.status(500).json({
         status: 'fail',
-        message: err.message,
+        message:
+            process.env.NODE_ENV === 'development'
+                ? err.message
+                : 'Internal server error!',
     });
 }

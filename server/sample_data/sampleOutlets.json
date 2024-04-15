@@ -3,6 +3,7 @@
         "name": "Fast Food Point",
         "contact": "9876543210",
         "status": "open",
+        "slug": "fast-food-point",
         "image": "delicious_delights.jpg",
         "menu_items": [
             {
@@ -29,6 +30,7 @@
         "name": "Cold Brew Cafe",
         "contact": "8765432109",
         "status": "closed",
+        "slug": "cold-brew-cafe",
         "image": "pizzeria_italia.jpg",
         "menu_items": [
             {
@@ -55,6 +57,7 @@
         "name": "Shree Tea Spot",
         "contact": "7654321098",
         "status": "open",
+        "slug": "shree-tea-spot",
         "image": "sushi_express.jpg",
         "menu_items": [
             {

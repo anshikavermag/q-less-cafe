@@ -46,7 +46,7 @@ export async function updateOutlet(req, res) {
             { new: true, runValidators: true },
         );
 
-        if (!updatedOutlet) return resourceNotFound(res);
+        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
 
         res.json({
             status: 'success',
@@ -62,7 +62,7 @@ export async function updateOutlet(req, res) {
 export async function deleteOutlet(req, res) {
     try {
         const outlet = await Outlet.findById(req.params.outletId);
-        if (!outlet) return resourceNotFound(res);
+        if (!outlet) return resourceNotFound(res, 'Outlet');
 
         await Outlet.deleteOne({ _id: req.params.outletId });
         res.status(204).json({
@@ -116,7 +116,7 @@ export async function getMenu(req, res) {
             },
         ]);
 
-        if (!menu[0]) return resourceNotFound(res);
+        if (!menu[0]) return resourceNotFound(res, 'Outlet');
 
         res.json({
             status: 'success',
@@ -139,7 +139,7 @@ export async function addMenuItem(req, res) {
             },
         );
 
-        if (!updatedOutlet) return resourceNotFound(res);
+        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
 
         res.status(201).json({
             status: 'success',
@@ -162,7 +162,7 @@ export async function updateMenuItem(req, res) {
             'menu_items._id': itemId,
         });
 
-        if (!outlet) return resourceNotFound(res);
+        if (!outlet) return resourceNotFound(res, 'Outlet');
 
         // Finding the index of the menu item
         const index = outlet.menu_items.findIndex((item) =>
@@ -192,7 +192,7 @@ export async function deleteMenuItem(req, res) {
             $pull: { menu_items: { _id: itemId } },
         });
 
-        if (!updatedOutlet) return resourceNotFound(res);
+        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
 
         res.status(204).json({
             status: 'success',

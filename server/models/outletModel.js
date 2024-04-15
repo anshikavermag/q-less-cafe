@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+import slugify from 'slugify';
 
 const menuItemSchema = new mongoose.Schema({
     name: {
@@ -44,8 +45,23 @@ const outletSchema = new mongoose.Schema({
             message: 'Outlet status can be: open or closed',
         },
     },
+    slug: String,
     image: String,
     menu_items: [menuItemSchema],
+});
+
+// Creating slugs
+outletSchema.pre('save', function (next) {
+    if (this.isModified) {
+        this.slug = slugify(this.name, { lower: true });
+    }
+    next();
+});
+outletSchema.pre('findOneAndUpdate', function (next) {
+    if (this._update.name) {
+        this._update.slug = slugify(this._update.name, { lower: true });
+    }
+    next();
 });
 
 const Outlet = mongoose.model('Outlet', outletSchema);

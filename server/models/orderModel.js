@@ -8,7 +8,6 @@ const orderItemSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, 'Order item must have a name'],
-        unique: true,
     },
     price: {
         type: Number,
@@ -26,7 +25,6 @@ const orderSchema = new mongoose.Schema({
     customer_name: {
         type: String,
         required: [true, 'Order must have a customer name'],
-        unique: true,
     },
     customer_contact: {
         type: String,
@@ -44,7 +42,10 @@ const orderSchema = new mongoose.Schema({
     order_number: {
         type: Number,
         required: [true, 'Order must have an order_number'],
-        unique: true,
+    },
+    order_total: {
+        type: Number,
+        required: [true, 'Order must have an order_total'],
     },
     status: {
         type: String,

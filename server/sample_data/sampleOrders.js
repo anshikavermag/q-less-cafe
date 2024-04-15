@@ -2,9 +2,10 @@ export const sampleOrders = [
     {
         customer_name: 'Mehul Sharma',
         customer_contact: '9876543210',
+        order_number: 1,
+        order_total: 260,
         status: 'new',
         cooking_time: 20,
-        order_number: 1,
         created_at: new Date().toISOString(),
         order_items: [
             {
@@ -24,9 +25,10 @@ export const sampleOrders = [
     {
         customer_name: 'Tanmay Jain',
         customer_contact: '8765432109',
+        order_number: 2,
+        order_total: 150,
         status: 'new',
         cooking_time: 10,
-        order_number: 2,
         created_at: new Date().toISOString(),
         order_items: [
             {
@@ -40,9 +42,10 @@ export const sampleOrders = [
     {
         customer_name: 'Priya Agrawal',
         customer_contact: '7654321098',
+        order_number: 3,
+        order_total: 20,
         status: 'new',
         cooking_time: 5,
-        order_number: 3,
         created_at: new Date().toISOString(),
         order_items: [
             {
@@ -56,9 +59,10 @@ export const sampleOrders = [
     {
         customer_name: 'Varun Tripathi',
         customer_contact: '6543210987',
+        order_number: 4,
+        order_total: 150,
         status: 'cooking',
         cooking_time: 25,
-        order_number: 4,
         created_at: new Date().toISOString(),
         order_items: [
             {
@@ -72,9 +76,10 @@ export const sampleOrders = [
     {
         customer_name: 'Nikita Verma',
         customer_contact: '9432109876',
+        order_number: 5,
+        order_total: 170,
         status: 'completed',
         cooking_time: 15,
-        order_number: 5,
         created_at: new Date().toISOString(),
         order_items: [
             {
