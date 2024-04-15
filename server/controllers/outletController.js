@@ -1,13 +1,7 @@
 import mongoose from 'mongoose';
 import Outlet from '../models/outletModel.js';
 import APIFeatures from '../utils/apiFeatures.js';
-
-function resourceNotFound(res) {
-    return res.status(404).json({
-        status: 'fail',
-        message: 'Resource not found!',
-    });
-}
+import { resourceNotFound, internalServerErr } from '../utils/errors.js';
 
 export async function getAllOutlets(req, res) {
     try {
@@ -23,10 +17,7 @@ export async function getAllOutlets(req, res) {
             },
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -64,10 +55,7 @@ export async function updateOutlet(req, res) {
             },
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -82,10 +70,7 @@ export async function deleteOutlet(req, res) {
             data: null,
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -131,7 +116,7 @@ export async function getMenu(req, res) {
             },
         ]);
 
-        if (!menu) return resourceNotFound(res);
+        if (!menu[0]) return resourceNotFound(res);
 
         res.json({
             status: 'success',
@@ -139,10 +124,7 @@ export async function getMenu(req, res) {
             data: menu[0],
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -166,10 +148,7 @@ export async function addMenuItem(req, res) {
             },
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -201,10 +180,7 @@ export async function updateMenuItem(req, res) {
             menu_items: updatedOutlet.menu_items,
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
 
@@ -223,9 +199,6 @@ export async function deleteMenuItem(req, res) {
             data: null,
         });
     } catch (err) {
-        res.status(500).json({
-            status: 'fail',
-            message: err.message,
-        });
+        internalServerErr(res, err);
     }
 }
