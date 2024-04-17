@@ -33,7 +33,9 @@ app.use(cors(corsOptions));
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
 
 app.use(express.json());
-app.use('/api/v1/outlets', outletRouter);
-app.use('/api/v1/orders', orderRouter);
+
+// Domain: https://api.qless.tech
+app.use('/v1/outlets', outletRouter);
+app.use('/v1/orders', orderRouter);
 
 export default app;
