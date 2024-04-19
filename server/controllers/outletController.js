@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import Outlet from '../models/outletModel.js';
 import APIFeatures from '../utils/apiFeatures.js';
-import { resourceNotFound, internalServerErr } from '../utils/errors.js';
+import APIError from '../utils/apiError.js';
 
-export async function getAllOutlets(req, res) {
+const errMessage = 'No outlet found with that ID';
+
+export async function getAllOutlets(req, res, next) {
     try {
         const queryBuilder = new APIFeatures(Outlet.find(), req.query);
         queryBuilder.filter().sort().project().paginate();
@@ -17,11 +19,11 @@ export async function getAllOutlets(req, res) {
             },
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function createOutlet(req, res) {
+export async function createOutlet(req, res, next) {
     try {
         const newOutlet = await Outlet.create(req.body);
         res.status(201).json({
@@ -31,14 +33,11 @@ export async function createOutlet(req, res) {
             },
         });
     } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err.message,
-        });
+        next(err);
     }
 }
 
-export async function updateOutlet(req, res) {
+export async function updateOutlet(req, res, next) {
     try {
         const updatedOutlet = await Outlet.findByIdAndUpdate(
             req.params.outletId,
@@ -46,7 +45,7 @@ export async function updateOutlet(req, res) {
             { new: true, runValidators: true },
         );
 
-        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
+        if (!updatedOutlet) return next(new APIError(errMessage, 404));
 
         res.json({
             status: 'success',
@@ -55,14 +54,14 @@ export async function updateOutlet(req, res) {
             },
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function deleteOutlet(req, res) {
+export async function deleteOutlet(req, res, next) {
     try {
         const outlet = await Outlet.findById(req.params.outletId);
-        if (!outlet) return resourceNotFound(res, 'Outlet');
+        if (!outlet) return next(new APIError(errMessage, 404));
 
         await Outlet.deleteOne({ _id: req.params.outletId });
         res.status(204).json({
@@ -70,11 +69,11 @@ export async function deleteOutlet(req, res) {
             data: null,
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function getMenu(req, res) {
+export async function getMenu(req, res, next) {
     const { sort: sortQuery } = req.query;
 
     // Converting query string to object for sorting in aggregation
@@ -116,7 +115,7 @@ export async function getMenu(req, res) {
             },
         ]);
 
-        if (!menu[0]) return resourceNotFound(res, 'Outlet');
+        if (!menu[0]) return next(new APIError(errMessage, 404));
 
         res.json({
             status: 'success',
@@ -124,11 +123,11 @@ export async function getMenu(req, res) {
             data: menu[0],
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function addMenuItem(req, res) {
+export async function addMenuItem(req, res, next) {
     try {
         const updatedOutlet = await Outlet.findByIdAndUpdate(
             req.params.outletId,
@@ -139,7 +138,7 @@ export async function addMenuItem(req, res) {
             },
         );
 
-        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
+        if (!updatedOutlet) return next(new APIError(errMessage, 404));
 
         res.status(201).json({
             status: 'success',
@@ -148,11 +147,11 @@ export async function addMenuItem(req, res) {
             },
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function updateMenuItem(req, res) {
+export async function updateMenuItem(req, res, next) {
     const reqEntries = Object.entries(req.body);
     const { outletId, itemId } = req.params;
 
@@ -162,7 +161,7 @@ export async function updateMenuItem(req, res) {
             'menu_items._id': itemId,
         });
 
-        if (!outlet) return resourceNotFound(res, 'Outlet');
+        if (!outlet) return next(new APIError(errMessage, 404));
 
         // Finding the index of the menu item
         const index = outlet.menu_items.findIndex((item) =>
@@ -180,11 +179,11 @@ export async function updateMenuItem(req, res) {
             menu_items: updatedOutlet.menu_items,
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function deleteMenuItem(req, res) {
+export async function deleteMenuItem(req, res, next) {
     const { outletId, itemId } = req.params;
 
     try {
@@ -192,13 +191,13 @@ export async function deleteMenuItem(req, res) {
             $pull: { menu_items: { _id: itemId } },
         });
 
-        if (!updatedOutlet) return resourceNotFound(res, 'Outlet');
+        if (!updatedOutlet) return next(new APIError(errMessage, 404));
 
         res.status(204).json({
             status: 'success',
             data: null,
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }

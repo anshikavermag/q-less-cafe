@@ -1,9 +1,11 @@
 import mongoose from 'mongoose';
 import Order from '../models/orderModel.js';
 import APIFeatures from '../utils/apiFeatures.js';
-import { resourceNotFound, internalServerErr } from '../utils/errors.js';
+import APIError from '../utils/apiError.js';
 
-export async function getAllOrders(req, res) {
+const errMessage = 'No order found with that ID';
+
+export async function getAllOrders(req, res, next) {
     try {
         const queryBuilder = new APIFeatures(Order.find(), req.query);
         queryBuilder.filter().sort().project().paginate();
@@ -17,15 +19,15 @@ export async function getAllOrders(req, res) {
             },
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function getOrder(req, res) {
+export async function getOrder(req, res, next) {
     try {
         const order = await Order.findById(req.params.id).select('-__v');
 
-        if (!order) return resourceNotFound(res, 'Order');
+        if (!order) return next(new APIError(errMessage, 404));
 
         res.json({
             status: 'success',
@@ -34,11 +36,11 @@ export async function getOrder(req, res) {
             },
         });
     } catch (err) {
-        internalServerErr(res, err);
+        next(err);
     }
 }
 
-export async function createOrder(req, res) {
+export async function createOrder(req, res, next) {
     try {
         const newOrder = await Order.create(req.body);
         res.status(201).json({
@@ -48,9 +50,6 @@ export async function createOrder(req, res) {
             },
         });
     } catch (err) {
-        res.status(400).json({
-            status: 'fail',
-            message: err.message,
-        });
+        next(err);
     }
 }

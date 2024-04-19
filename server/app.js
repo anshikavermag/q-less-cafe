@@ -3,22 +3,21 @@ import cors from 'cors';
 import morgan from 'morgan';
 import outletRouter from './routes/outletRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import APIError from './utils/apiError.js';
+import globalErrorHandler from './controllers/errorController.js';
 
 const app = express();
 
 // Defining allowed origins
 let allowedOrigins = [
     'https://www.qless.tech',
-    'http://localhost',
     'http://localhost:5173',
-    'http://127.0.0.1',
     'http://127.0.0.1:5173',
 ];
 
 // Defining CORS options
 const corsOptions = {
     origin: function (origin, callback) {
-        console.log('origin:', origin);
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {
@@ -37,5 +36,11 @@ app.use(express.json());
 // Domain: https://api.qless.tech
 app.use('/v1/outlets', outletRouter);
 app.use('/v1/orders', orderRouter);
+
+app.all('*', (req, res, next) => {
+    next(new APIError(`Can't find ${req.originalUrl} on this server!`, 404));
+});
+
+app.use(globalErrorHandler);
 
 export default app;
