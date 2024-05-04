@@ -9,15 +9,30 @@ import {
     updateMenuItem,
     deleteMenuItem,
 } from '../controllers/outletController.js';
+import { protect, restrictTo } from '../controllers/authController.js';
 
 const outletRouter = express.Router();
 
-outletRouter.route('/').get(getAllOutlets).post(createOutlet);
-outletRouter.route('/:outletId').patch(updateOutlet).delete(deleteOutlet);
-outletRouter.route('/:outletId/menu').get(getMenu).post(addMenuItem);
+outletRouter.use('/', protect);
+
+outletRouter
+    .route('/')
+    .get(getAllOutlets)
+    .post(restrictTo('admin'), createOutlet);
+
+outletRouter
+    .route('/:outletId')
+    .patch(restrictTo('admin'), updateOutlet)
+    .delete(restrictTo('admin'), deleteOutlet);
+
+outletRouter
+    .route('/:outletId/menu')
+    .get(getMenu)
+    .post(restrictTo('admin'), addMenuItem);
+
 outletRouter
     .route('/:outletId/menu/:itemId')
-    .patch(updateMenuItem)
-    .delete(deleteMenuItem);
+    .patch(restrictTo('admin'), updateMenuItem)
+    .delete(restrictTo('admin'), deleteMenuItem);
 
 export default outletRouter;

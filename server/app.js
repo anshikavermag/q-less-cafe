@@ -3,6 +3,7 @@ import cors from 'cors';
 import morgan from 'morgan';
 import outletRouter from './routes/outletRoutes.js';
 import orderRouter from './routes/orderRoutes.js';
+import userRouter from './routes/userRoutes.js';
 import APIError from './utils/apiError.js';
 import globalErrorHandler from './controllers/errorController.js';
 
@@ -36,6 +37,7 @@ app.use(express.json());
 // Domain: https://api.qless.tech
 app.use('/v1/outlets', outletRouter);
 app.use('/v1/orders', orderRouter);
+app.use('/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
     next(new APIError(`Can't find ${req.originalUrl} on this server!`, 404));
