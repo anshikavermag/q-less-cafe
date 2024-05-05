@@ -6,8 +6,32 @@ import orderRouter from './routes/orderRoutes.js';
 import userRouter from './routes/userRoutes.js';
 import APIError from './utils/apiError.js';
 import globalErrorHandler from './controllers/errorController.js';
+import { rateLimit } from 'express-rate-limit';
+import helmet from 'helmet';
+import mongoSanitize from 'express-mongo-sanitize';
+import hpp from 'hpp';
 
 const app = express();
+
+// Security HTTP headers
+app.use(helmet());
+
+// Rate Limiting
+const limiter = rateLimit({
+    max: 100,
+    windowMs: 1 * 60 * 60 * 1000,
+    message: 'Too many requests from this IP, please try again in an hour!',
+});
+app.use(limiter);
+
+// Body Parser
+app.use(express.json({ limit: '10kb' }));
+
+// Data Sanitization against NoSQL Query Injection
+app.use(mongoSanitize());
+
+// Preventing Parameter Pollution
+app.use(hpp());
 
 // Defining allowed origins
 let allowedOrigins = [
@@ -31,8 +55,6 @@ app.use(cors(corsOptions));
 
 // Using morgan for logging HTTP requests
 if (process.env.NODE_ENV === 'development') app.use(morgan('dev'));
-
-app.use(express.json());
 
 // Domain: https://api.qless.tech
 app.use('/v1/outlets', outletRouter);
