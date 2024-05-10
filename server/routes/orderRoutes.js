@@ -8,7 +8,7 @@ import { protect } from '../controllers/authController.js';
 
 const orderRouter = express.Router();
 
-orderRouter.use('/', protect);
+// orderRouter.use('/', protect);
 
 orderRouter.route('/').get(getAllOrders).post(createOrder);
 

@@ -13,7 +13,7 @@ import { protect, restrictTo } from '../controllers/authController.js';
 
 const outletRouter = express.Router();
 
-outletRouter.use('/', protect);
+// outletRouter.use('/', protect);
 
 outletRouter
     .route('/')
