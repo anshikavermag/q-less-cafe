@@ -19,7 +19,7 @@ function CreateUser() {
     return (
         <div className={styles.right__Section}>
             <div className={styles.heading}>
-                <h1>Welcome to Ju Cafetaria</h1>
+                <h1>Welcome to JU Cafeteria</h1>
                 <h4>Skip the line, savor the taste</h4>
             </div>
             <div className={styles.line}>&nbsp;</div>

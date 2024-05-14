@@ -15,7 +15,7 @@ function Order() {
                 <p>
                     Order #{orderData.order_number.toString().padStart(3, "0")}
                 </p>
-                <div>cooking</div>
+                <div>{orderData.status}</div>
             </header>
             <section>
                 <header>
