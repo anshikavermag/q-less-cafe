@@ -1,5 +1,13 @@
+import Cookies from "universal-cookie";
+
+const cookies = new Cookies();
+
 async function getAllOutlets() {
-    const res = await fetch(`${import.meta.env.VITE_API_URL}/outlets`);
+    const res = await fetch(`${import.meta.env.VITE_API_URL}/outlets`, {
+        headers: {
+            Authorization: `Bearer ${cookies.get("TOKEN")}`,
+        },
+    });
 
     if (!res.ok) throw new Error("Unable to fetch Outlets");
     const outletData = await res.json();
@@ -8,7 +16,12 @@ async function getAllOutlets() {
 
 async function getOrder(orderId) {
     const res = await fetch(
-        `${import.meta.env.VITE_API_URL}/orders/${orderId}`
+        `${import.meta.env.VITE_API_URL}/orders/${orderId}`,
+        {
+            headers: {
+                Authorization: `Bearer ${cookies.get("TOKEN")}`,
+            },
+        }
     );
     if (!res.ok) throw new Error("Unable to fetch Order Details");
     const orderData = await res.json();
@@ -21,6 +34,7 @@ async function createOrder(order) {
             method: "POST",
             body: JSON.stringify(order),
             headers: {
+                Authorization: `Bearer ${cookies.get("TOKEN")}`,
                 "Content-Type": "application/json",
             },
         });
