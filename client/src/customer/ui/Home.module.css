@@ -1,0 +1,55 @@
+#homePage {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: #fff;
+    width: 100%;
+}
+
+.left__Section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--Primary-75, #fef0e0);
+    border-radius: 1.6rem;
+    padding: 0.5rem;
+}
+
+.left__Section > img {
+    background: var(--Primary-75, #fef0e0) 50% / cover no-repeat;
+    height: 94%;
+}
+
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--Gap-75, 0.75rem);
+}
+.logo img {
+    width: 3.75rem;
+    height: 3.75rem;
+}
+.left__Section p {
+    color: #231f20;
+    font-family: "Clash Display";
+    font-size: 1.5rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.left__Section > p {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--Neutral-800, #464646);
+    font-family: "Poppins";
+}
+.logo_text {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo_text > p {
+    font-weight: 400;
+}

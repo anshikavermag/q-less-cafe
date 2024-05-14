@@ -1,0 +1,43 @@
+/**
+ * @license
+ *
+ * Font Family: Clash Display
+ * Designed by: Indian Type Foundry
+ * URL: https://www.fontshare.com/fonts/clash-display
+ * © 2023 Indian Type Foundry
+ *
+ * Font Styles:
+ * Clash Display Regular
+ * Clash Display Medium
+ * Clash Display Semibold
+*/
+
+@font-face {
+    font-family: "ClashDisplay-Regular";
+    src: url("./ClashDisplay-Regular.woff2") format("woff2"),
+        url("./ClashDisplay-Regular.woff") format("woff"),
+        url("./ClashDisplay-Regular.ttf") format("truetype");
+    font-weight: 400;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ClashDisplay-Medium";
+    src: url("./ClashDisplay-Medium.woff2") format("woff2"),
+        url("./ClashDisplay-Medium.woff") format("woff"),
+        url("./ClashDisplay-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-display: swap;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "ClashDisplay-Semibold";
+    src: url("./ClashDisplay-Semibold.woff2") format("woff2"),
+        url("./ClashDisplay-Semibold.woff") format("woff"),
+        url("./ClashDisplay-Semibold.ttf") format("truetype");
+    font-weight: 600;
+    font-display: swap;
+    font-style: normal;
+}

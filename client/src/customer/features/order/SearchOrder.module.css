@@ -1,0 +1,26 @@
+.search__form {
+  display: flex;
+}
+
+.search {
+  display: flex;
+  padding: var(--Gap-50, 0.5rem) var(--Gap-250, 2.5rem) var(--Gap-50, 0.5rem)
+    var(--Gap-150, 1.5rem);
+  justify-content: center;
+  align-items: center;
+  gap: var(--Gap-50, 0.5rem);
+  border: none;
+  border-radius: 6.25rem;
+  background: var(--Neutral-50, #fff);
+
+  color: var(--Neutral-800, #464646);
+  /* Text sm/Light */
+  font-family: Poppins;
+  font-size: 1rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+}
+.search:focus {
+  outline: none;
+}

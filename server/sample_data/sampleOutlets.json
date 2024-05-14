@@ -4,52 +4,58 @@
         "contact": "9876543210",
         "status": "open",
         "slug": "fast-food-point",
-        "image": "delicious_delights.jpg",
+        "image": "fast-food-point.jpg",
         "menu_items": [
             {
                 "name": "French Fries",
                 "price": 80,
                 "cooking_time": 15,
-                "image": "chicken_tikka_masala.jpg"
+                "image": "french-fries.jpg"
             },
             {
                 "name": "Pasta",
                 "price": 100,
                 "cooking_time": 20,
-                "image": "vegetable_biryani.jpg"
+                "image": "pasta.jpg"
             },
             {
                 "name": "Cheese Pizza",
                 "price": 150,
                 "cooking_time": 25,
-                "image": "salmon_nigiri.jpg"
+                "image": "cheese-pizza.jpg"
+            },
+            {
+                "name": "Idli",
+                "price": 180,
+                "cooking_time": 30,
+                "image": "idli.jpg"
             }
         ]
     },
     {
         "name": "Cold Brew Cafe",
-        "contact": "8765432109",
+        "contact": "9632587410",
         "status": "closed",
         "slug": "cold-brew-cafe",
-        "image": "pizzeria_italia.jpg",
+        "image": "cold-brew-cafe.jpg",
         "menu_items": [
             {
                 "name": "Cappuccino",
                 "price": 50,
                 "cooking_time": 10,
-                "image": "margherita_pizza.jpg"
+                "image": "coffee-cappuccino.jpg"
             },
             {
                 "name": "Frappe",
                 "price": 70,
                 "cooking_time": 15,
-                "image": "pepperoni_pizza.jpg"
+                "image": "coffee-frappe.jpg"
             },
             {
                 "name": "Latte",
                 "price": 60,
                 "cooking_time": 10,
-                "image": "salmon_nigiri.jpg"
+                "image": "coffee-latte.jpg"
             }
         ]
     },
@@ -58,25 +64,25 @@
         "contact": "7654321098",
         "status": "open",
         "slug": "shree-tea-spot",
-        "image": "sushi_express.jpg",
+        "image": "shree-tea-spot.jpg",
         "menu_items": [
             {
                 "name": "Masala Chai",
                 "price": 20,
                 "cooking_time": 5,
-                "image": "california_roll.jpg"
+                "image": "masala-chai.jpg"
             },
             {
                 "name": "Green Tea",
                 "price": 30,
                 "cooking_time": 10,
-                "image": "salmon_nigiri.jpg"
+                "image": "green-tea.jpg"
             },
             {
                 "name": "Special Chai",
                 "price": 10,
                 "cooking_time": 5,
-                "image": "salmon_nigiri.jpg"
+                "image": "special-chai.jpg"
             }
         ]
     }

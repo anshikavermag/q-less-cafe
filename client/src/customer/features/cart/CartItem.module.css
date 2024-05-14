@@ -1,0 +1,21 @@
+.cart__item {
+  display: flex;
+  padding: var(--Gap-75, 0.75rem) 0rem;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-bottom: 1px solid var(--Neutral-200, #e5e7eb);
+}
+
+.cart__item > p {
+  width: 18.75rem;
+  min-width: 18.75rem;
+  color: #000;
+
+  /* Text md/Regular */
+  font-family: Poppins;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

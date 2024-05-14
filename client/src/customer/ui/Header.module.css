@@ -1,0 +1,39 @@
+.nav {
+    display: flex;
+    width: 100%;
+    padding: var(--Gap-75, 0.75rem) var(--Gap-300, 3rem);
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--Primary-500, #f7902b);
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    gap: var(--Gap-50, 0.5rem);
+}
+.house {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+.heading {
+    color: var(--Neutral-950, #292929);
+    /* Text sm/Medium */
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.username {
+    color: var(--Neutral-950, #292929);
+    /* Text sm/Medium */
+    font-family: Poppins;
+    font-size: 1rem;
+    font-style: normal;
+    text-transform: uppercase;
+    font-weight: 500;
+    line-height: normal;
+}
