@@ -8,7 +8,7 @@ function Header() {
         <nav className={styles.nav}>
             <Link to="/outlets" className={styles.logo}>
                 <img
-                    src="./../../images/home-black-small.png"
+                    src="/home-black-small.png"
                     alt="logo"
                     className={styles.house}
                 />

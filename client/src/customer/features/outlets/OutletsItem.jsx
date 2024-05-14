@@ -7,7 +7,7 @@ function OutletsItem({ item }) {
         <li
             className={styles.item}
             style={{
-                backgroundImage: `url(${`./../../images/${item.image}`})`,
+                backgroundImage: `url(${`/${item.image}`})`,
                 backgroundColor: "lightgray",
                 backgroundSize: "cover",
                 backgroundPosition: "center",

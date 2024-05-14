@@ -87,7 +87,7 @@ function Order() {
                 </ul>
                 <div className={styles.total}>
                     <div>
-                        <img src="./../../images/coin.png" />
+                        <img src="/coin.png" />
                         <p>Total Bill</p>
                     </div>
                     <p>{formatCurrency(orderData.order_total)}</p>

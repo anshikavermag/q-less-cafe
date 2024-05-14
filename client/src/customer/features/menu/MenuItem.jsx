@@ -27,7 +27,7 @@ function MenuItem({ item }) {
             <div
                 className={styles.image}
                 style={{
-                    backgroundImage: `url(${`./../../images/${item.image}`})`,
+                    backgroundImage: `url(${`/${item.image}`})`,
                     backgroundColor: "lightgray",
                     backgroundSize: "100% 100%",
                     backgroundPosition: "center",

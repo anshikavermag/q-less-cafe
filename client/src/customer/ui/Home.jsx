@@ -4,12 +4,12 @@ function Home() {
     return (
         <div id={styles.homePage}>
             <div className={styles.left__Section}>
-                <img src="./../../images/hero-img.png" alt="hero" />
+                <img src="/hero-img.png" alt="hero" />
                 <div className={styles.logo_text}>
                     <p>powered by</p>
                     <div className={styles.logo}>
                         <img
-                            src="./../../images/Logo.png"
+                            src="/Logo.png"
                             alt="logo"
                             height="3.75rem"
                             width="2.75rem"
