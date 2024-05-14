@@ -40,7 +40,7 @@ function Outlets() {
                 </h3>
                 <div className={styles.list}>
                     {outlets.map((item) => (
-                        <OutletsItem item={item} key={item.id} />
+                        <OutletsItem item={item} key={item._id} />
                     ))}
                 </div>
             </section>

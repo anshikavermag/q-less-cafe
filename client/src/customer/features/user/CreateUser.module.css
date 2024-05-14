@@ -90,3 +90,16 @@
     background: var(--Primary-500, #f7902b);
     font-size: 1.25rem;
 }
+
+.form button:disabled {
+    background: var(--Primary-500, #e3974a);
+    cursor: not-allowed;
+}
+
+.form div {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+}

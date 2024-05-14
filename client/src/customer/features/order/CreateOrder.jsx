@@ -6,7 +6,7 @@ import store from "../../store";
 import { clearCart } from "../cart/CartSlice";
 
 function CreateOrder() {
-    const userName = useSelector((store) => store.user.userName);
+    const { name } = useSelector((store) => store.user.info);
     const cart = useSelector((store) => store.cart.cart);
     const navigate = useNavigate();
     const navigation = useNavigation();
@@ -21,7 +21,7 @@ function CreateOrder() {
                         <label>First Name</label>
                         <input
                             type="text"
-                            defaultValue={userName}
+                            defaultValue={name}
                             required
                             name="customer_name"
                         />

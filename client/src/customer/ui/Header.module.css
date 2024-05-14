@@ -27,6 +27,26 @@
     line-height: normal;
 }
 
+.navRight {
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+.navRight button {
+    background: none;
+    outline: none;
+    border: none;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+}
+
+.navRight svg {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
 .username {
     color: var(--Neutral-950, #292929);
     /* Text sm/Medium */
